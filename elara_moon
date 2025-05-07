@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Enigmatic Inheritance of Elara Moon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            position: relative; /* Needed for tooltip positioning context */
+        }
+        .hard-word {
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            color: #6d28d9; /* purple-700 */
+            font-weight: 600;
+            position: relative; /* For tooltip positioning reference */
+        }
+        .hard-word:hover {
+            color: #5b21b6; /* purple-800 */
+        }
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .story-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem; /* text-lg */
+            line-height: 1.75; /* leading-relaxed */
+            color: #374151; /* gray-700 */
+        }
+        .chapter-title {
+            font-size: 2.25rem; /* text-3xl */
+            font-weight: 600; /* font-semibold */
+            color: #5b21b6; /* purple-700 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            padding-bottom: 0.5rem; /* pb-2 */
+            border-bottom-width: 2px;
+            border-color: #ddd6fe; /* purple-200 */
+        }
+        .main-title {
+            font-size: 2.75rem; /* text-4xl */
+            md:font-size: 3.25rem; /* md:text-5xl */ /* Note: This is not standard Tailwind, but kept from original */
+            font-weight: 700; /* font-bold */
+            color: #5b21b6; /* purple-700 */
+        }
+        .svg-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+            gap: 1rem; /* space between SVGs if multiple */
+        }
+        .svg-illustration {
+            max-width: 150px;
+            height: auto;
+            fill: #4a044e; /* purple-900 for fill */
+            stroke: #a855f7; /* purple-500 for stroke */
+            stroke-width: 2;
+        }
+
+        /* Tooltip Styles */
+        #definition-tooltip {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd6fe; /* purple-200 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.75rem 1rem; /* p-3 p-4 */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            z-index: 50;
+            max-width: 300px; /* Adjust as needed */
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+            pointer-events: none; /* Initially not interactive */
+        }
+        #definition-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto; /* Make interactive when visible */
+        }
+        #tooltip-word {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: bold;
+            color: #6d28d9; /* purple-700 */
+            margin-bottom: 0.25rem; /* mb-1 */
+        }
+        #tooltip-definition {
+            font-size: 0.95rem; /* Slightly smaller than text-base */
+            color: #4b5563; /* gray-600 */
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="bg-purple-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-12">
+            <h1 class="main-title">The Enigmatic Inheritance of Elara Moon</h1>
+        </header>
+
+        <main id="story-content" class="story-text bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl">
+            <section class="mb-12">
+                <h2 class="chapter-title">Chapter 1: An Unexpected Summons</h2>
+                <div class="svg-container">
+                    <svg class="svg-illustration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <title>Ostentatious Owl</title>
+                        <path d="M50 10 C 30 10, 10 30, 10 50 C 10 70, 30 90, 50 90 C 70 90, 90 70, 90 50 C 90 30, 70 10, 50 10 Z" fill="#d8bfd8"/>
+                        <circle cx="35" cy="40" r="8" fill="#f0e68c"/>
+                        <circle cx="65" cy="40" r="8" fill="#f0e68c"/>
+                        <circle cx="35" cy="40" r="3" fill="black"/>
+                        <circle cx="65" cy="40" r="3" fill="black"/>
+                        <path d="M50 50 L 45 60 L 55 60 Z" fill="#ffd700"/>
+                        <path d="M20 30 Q 15 20, 25 15" stroke="#ffd700" stroke-width="3" fill="none"/>
+                        <path d="M80 30 Q 85 20, 75 15" stroke="#ffd700" stroke-width="3" fill="none"/>
+                        <path d="M30 70 Q 50 80, 70 70" stroke="#a0522d" stroke-width="4" fill="none"/>
+                        <ellipse cx="50" cy="20" rx="20" ry="8" fill="#b8860b" />
+                        <path d="M40 15 Q 50 5, 60 15" stroke="#ffd700" stroke-width="2" fill="none" />
+                    </svg>
+                    <svg class="svg-illustration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <title>Parchment</title>
+                        <rect x="20" y="10" width="60" height="80" fill="#f5f5dc" rx="5" ry="5"/>
+                        <line x1="25" y1="20" x2="75" y2="20" stroke="#8b4513" stroke-width="2"/>
+                        <line x1="25" y1="30" x2="75" y2="30" stroke="#8b4513" stroke-width="2"/>
+                        <line x1="25" y1="40" x2="65" y2="40" stroke="#8b4513" stroke-width="2"/>
+                        <path d="M70 75 Q 75 70, 80 75 L 80 85 Q 75 90, 70 85 Z" fill="#c0392b"/>
+                    </svg>
+                </div>
+                <p>Elara Moon, a girl with an <span class="hard-word" data-definition="(adj) (of an appetite or desire) impossible to satisfy.">insatiable</span> curiosity, meaning a hunger for knowledge that could never be fully satisfied, was perched on her window seat, <span class="hard-word" data-definition="(v) reading or examining something carefully.">perusing</span> a book about ancient constellations. She wasn't just reading; she was <span class="hard-word" data-definition="(v) reading or examining something carefully.">perusing</span> it, examining every detail with great care. Suddenly, an <span class="hard-word" data-definition="(adj) characterized by pretentious or showy display; designed to impress.">ostentatious</span> owl, almost embarrassingly showy with its flamboyant, gold-tipped feathers, tapped <span class="hard-word" data-definition="(adv) assuming power or authority without justification; arrogant and domineering.">imperiously</span> at her window. This wasn't any ordinary bird; its arrival felt <span class="hard-word" data-definition="(adj) of great importance or significance, especially in its bearing on the future.">momentous</span>, an event of great importance.</p>
+                <p>Attached to its leg was a <span class="hard-word" data-definition="(n) a stiff, flat, thin material made from the prepared skin of an animal, formerly used as a durable writing surface.">parchment</span>, a stiff, yellowish paper, sealed with a crest Elara didn't recognize. Her heart gave a little <span class="hard-word" data-definition="(n) a noticeably rapid, strong, or irregular heartbeat due to agitation, exertion, or illness.">palpitation</span>, a rapid, irregular beat, as she unrolled it. The script was elegant, almost <span class="hard-word" data-definition="(adj) relating to decorative handwriting or handwritten lettering.">calligraphic</span>, like beautiful, artistic handwriting. It was a <span class="hard-word" data-definition="(n) an order to appear before a judge or magistrate, or the writ containing such an order. (Here used more generally).">summons</span> from a great-aunt she never knew she had, a certain Great-Aunt Callista, requesting her <span class="hard-word" data-definition="(adj) occurring or done at once; instant.">immediate</span> presence at "Whispering Manor," a place Elara had never heard of. The letter hinted at an <span class="hard-word" data-definition="(n) a thing that is inherited.">inheritance</span>, something valuable passed down, but was otherwise <span class="hard-word" data-definition="(adj) having a meaning that is mysterious or obscure.">cryptic</span>, deliberately mysterious and puzzling.</p>
+                <p>"Whispering Manor?" Elara <span class="hard-word" data-definition="(v) be absorbed in thought.">mused</span>, the name itself sounding <span class="hard-word" data-definition="(adj) of or like a portent; done in a pompously or overly solemn manner so as to impress. Ominous.">portentous</span>, like a sign or warning of something significant, possibly even ominous, about to happen. Her parents, usually quite <span class="hard-word" data-definition="(adj) (of a person) having an unemotional and stolidly calm disposition.">phlegmatic</span>, meaning calm and not easily excited, exchanged worried glances. They explained that Callista was an <span class="hard-word" data-definition="(adj) (of a person or their behaviour) unconventional and slightly strange.">eccentric</span> relative, a bit strange and unconventional, who lived a <span class="hard-word" data-definition="(adj) avoiding the company of other people; solitary.">reclusive</span> life, deliberately avoiding other people. Despite their <span class="hard-word" data-definition="(n) anxiety or fear that something bad or unpleasant will happen.">apprehension</span>, their feeling of anxiety about what might happen, they agreed Elara should go, sensing this was an <span class="hard-word" data-definition="(adj) (of a time) well-chosen or particularly favourable or appropriate.">opportune</span> moment, a favorable or well-timed chance, for her to learn about a forgotten branch of their family. Elara, feeling a <span class="hard-word" data-definition="(n) a sudden strong feeling of excitement or fear; a thrill.">frisson</span> of excitement, a sudden, brief thrill, immediately began to pack, her mind already <span class="hard-word" data-definition="(v) thinking deeply about something.">ruminating</span>, or thinking deeply, about the <span class="hard-word" data-definition="(adj) difficult to interpret or understand; mysterious.">enigmatic</span> inheritance mentioned in the <span class="hard-word" data-definition="(adj) having a meaning that is mysterious or obscure.">cryptic</span> letter. What could this <span class="hard-word" data-definition="(adj) difficult to interpret or understand; mysterious.">enigmatic</span>, or puzzling, inheritance be?</p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="chapter-title">Chapter 2: The Labyrinthine Manor</h2>
+                <div class="svg-container">
+                    <svg class="svg-illustration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <title>Gargantuan Manor</title>
+                        <path d="M20 80 H 80 V 50 L 50 30 L 20 50 Z" fill="#808080" stroke="#333" stroke-width="2"/>
+                        <rect x="30" y="60" width="15" height="20" fill="#a0522d"/>
+                        <rect x="55" y="60" width="15" height="10" fill="#d2b48c"/>
+                        <path d="M15 50 L 20 45 L 20 20 L 25 15 L 30 20 L 30 45 L 35 50 Z" fill="#696969"/>
+                        <path d="M85 50 L 80 45 L 80 20 L 75 15 L 70 20 L 70 45 L 65 50 Z" fill="#696969"/>
+                        <circle cx="50" cy="40" r="5" fill="#add8e6" stroke="black" stroke-width="1"/>
+                    </svg>
+                     <svg class="svg-illustration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <title>Tomes (Books)</title>
+                        <rect x="20" y="70" width="60" height="15" fill="#8b4513" rx="2" ry="2"/>
+                        <rect x="22" y="72" width="56" height="11" fill="#deb887"/>
+                        <rect x="25" y="53" width="50" height="15" fill="#704214" rx="2" ry="2"/>
+                        <rect x="27" y="55" width="46" height="11" fill="#f0e68c"/>
+                        <rect x="30" y="36" width="40" height="15" fill="#5d3a1a" rx="2" ry="2"/>
+                        <rect x="32" y="38" width="36" height="11" fill="#fff8dc"/>
+                    </svg>
+                </div>
+                <p>The journey to Whispering Manor was long and <span class="hard-word" data-definition="(adj) involving or requiring strenuous effort; difficult and tiring.">arduous</span>, requiring a lot of effort and being very tiring. When Elara finally arrived, the manor loomed before her, a <span class="hard-word" data-definition="(adj) enormous.">gargantuan</span> structure, absolutely huge and imposing. Its architecture was a <span class="hard-word" data-definition="(n) a number of different things, parts or items that are grouped together; collection.">conglomeration</span>, a mixture of various styles, from Gothic spires to Victorian turrets, making it look both grand and slightly <span class="hard-word" data-definition="(adj) lacking any obvious principle of organization.">haphazard</span>, or disorganized. The grounds were somewhat <span class="hard-word" data-definition="(adj) (of a building or object) in a state of disrepair or ruin as a result of age or neglect.">dilapidated</span>, in a state of disrepair from neglect, with overgrown gardens that hinted at a once-magnificent past.</p>
+                <p>An elderly, <span class="hard-word" data-definition="(adj) (of a person) lean and haggard, especially because of suffering, hunger, or age.">gaunt</span> butler, so thin he looked almost skeletal, greeted her. His name was Mr. Filbert, and his manner was <span class="hard-word" data-definition="(adj) (of a person) reserved or uncommunicative in speech; saying little.">taciturn</span>, meaning he was reserved and said very little. He led Elara through <span class="hard-word" data-definition="(adj) (of a network) like a labyrinth; irregular and twisting.">labyrinthine</span> corridors, a complex and confusing network of passages, where portraits with <span class="hard-word" data-definition="(adj) causing one to feel unsettled.">disconcerting</span> eyes, eyes that made her feel uneasy, seemed to follow her every move. The air was thick with the smell of old wood and something else, something faintly sweet and <span class="hard-word" data-definition="(adj) extremely delicate and light in a way that seems not to be of this world.">ethereal</span>, meaning delicate and light, as if not of this world.</p>
+                <p>Finally, they reached a vast library. Bookshelves, heavy with <span class="hard-word" data-definition="(n) large, heavy, scholarly books.">tomes</span> – large, scholarly books – stretched to the ceiling. In the centre, by a crackling fireplace, sat an old woman with eyes as bright and <span class="hard-word" data-definition="(adj) having a ready insight into and understanding of things.">perspicacious</span> as a hawk's, showing she had a sharp ability to understand things quickly. This, Elara knew, had to be Great-Aunt Callista. She was not as <span class="hard-word" data-definition="(adj) unfriendly or threatening in appearance.">forbidding</span>, or unfriendly and threatening, as Elara had imagined. Instead, she had an air of <span class="hard-word" data-definition="(n) the quality of having or showing great knowledge or learning; scholarship.">erudition</span>, great knowledge acquired by study, and a mischievous twinkle in her eye.</p>
+                <p>"Welcome, Elara," Callista said, her voice surprisingly <span class="hard-word" data-definition="(adj) (of a person's voice or other sound) imposingly deep and full.">sonorous</span>, full and deep in sound. "I trust your journey wasn't too <span class="hard-word" data-definition="(adj) (of a task or responsibility) involving a great deal of effort, trouble, or difficulty.">onerous</span>, too burdensome or troublesome?"</p>
+                <p>Elara, a little <span class="hard-word" data-definition="(adj) bewildered or perplexed.">flummoxed</span>, or completely bewildered, by the <span class="hard-word" data-definition="(n) splendour and impressiveness, especially of appearance or style.">grandeur</span> and the <span class="hard-word" data-definition="(adj) strange or odd; unusual.">peculiar</span> atmosphere, just nodded.</p>
+                <p>"Good," Callista continued. "We have much to <span class="hard-word" data-definition="(v) speak or write authoritatively about a topic. (n) written or spoken communication or debate.">discourse</span> upon, to talk about at length. The inheritance I mentioned is not <span class="hard-word" data-definition="(adj) relating to money or currency.">monetary</span>, not about money, child. It is… a legacy of a different kind, one that requires a <span class="hard-word" data-definition="(adj) having or showing keen mental discernment and good judgement; wise or shrewd.">sagacious</span> mind, a mind that is wise and shows good judgement."</p>
+                <p>Callista gestured towards a small, <span class="hard-word" data-definition="(adj) elaborately or highly decorated.">ornate</span> box, elaborately decorated, on a nearby table. "The first part of your <span class="hard-word" data-definition="(adj) difficult to interpret or understand; mysterious.">enigmatic</span> inheritance lies within. But it will not <span class="hard-word" data-definition="(v) produce or provide (a natural, agricultural, or industrial product); give way to arguments, demands, or pressure.">yield</span> its secrets <span class="hard-word" data-definition="(adv) in a way that is subject to sudden, unaccountable changes of mood or behaviour.">capriciously</span>, or on a sudden whim. You must prove yourself."</p>
+                <p>The <span class="hard-word" data-definition="(adj) (of a network) like a labyrinth; irregular and twisting.">labyrinthine</span> nature of the house itself seemed to mirror the complexity of the task ahead.</p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="chapter-title">Chapter 3: The Conundrum of the Constellations</h2>
+                <div class="svg-container">
+                    <svg class="svg-illustration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <title>Ornate Box</title>
+                        <rect x="20" y="35" width="60" height="30" fill="#5d3a1a" stroke="#3e2723" stroke-width="2" rx="3"/>
+                        <circle cx="35" cy="50" r="3" fill="#e6e6fa"/> <circle cx="50" cy="45" r="2" fill="#e6e6fa"/>
+                        <circle cx="65" cy="50" r="3" fill="#e6e6fa"/>
+                        <rect x="45" y="30" width="10" height="5" fill="#c0c0c0"/>
+                    </svg>
+                    <svg class="svg-illustration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <title>Constellation</title>
+                        <circle cx="20" cy="30" r="3" fill="white" stroke="yellow" stroke-width="1"/>
+                        <circle cx="40" cy="20" r="4" fill="white" stroke="yellow" stroke-width="1"/>
+                        <circle cx="60" cy="35" r="3" fill="white" stroke="yellow" stroke-width="1"/>
+                        <circle cx="50" cy="60" r="5" fill="white" stroke="yellow" stroke-width="1"/>
+                        <circle cx="75" cy="50" r="3" fill="white" stroke="yellow" stroke-width="1"/>
+                        <line x1="20" y1="30" x2="40" y2="20" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+                        <line x1="40" y1="20" x2="60" y2="35" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+                        <line x1="60" y1="35" x2="50" y2="60" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+                        <line x1="50" y1="60" x2="75" y2="50" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+                        <line x1="60" y1="35" x2="75" y2="50" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+                    </svg>
+                </div>
+                <p>Great-Aunt Callista explained that the <span class="hard-word" data-definition="(adj) elaborately or highly decorated.">ornate</span> box contained a <span class="hard-word" data-definition="(n) a confusing and difficult problem or question.">conundrum</span>, a confusing and difficult problem or question. "This family," she began, her <span class="hard-word" data-definition="(adj) having a ready insight into and understanding of things.">perspicacious</span> eyes fixed on Elara, "has always been <span class="hard-word" data-definition="(v) consist of; be made up of.">comprised</span> of <span class="hard-word" data-definition="(n) people who have responsibility for taking care of or protecting something.">custodians</span>, keepers or guardians, of ancient knowledge. This knowledge is not for the <span class="hard-word" data-definition="(adj) not having any serious purpose or value.">frivolous</span>, those who are not serious or sensible."</p>
+                <p>Elara, feeling a mixture of <span class="hard-word" data-definition="(n) a feeling of fear or anxiety about something that may happen.">trepidation</span>, a feeling of fear that something bad might happen, and intense curiosity, examined the box. It was made of a dark, unfamiliar wood, inlaid with mother-of-pearl in patterns that looked like star constellations – the very subject she had been <span class="hard-word" data-definition="(v) reading or examining something carefully.">perusing</span>! There were no visible locks or hinges. It seemed <span class="hard-word" data-definition="(adj) impossible to pass through or enter.">impenetrable</span>, impossible to get through or into.</p>
+                <p>"The key is not physical," Callista hinted, a sly smile playing on her lips. "It is <span class="hard-word" data-definition="(adj) of the cerebrum of the brain; intellectual rather than emotional or physical.">cerebral</span>, related to the intellect and brain. You must <span class="hard-word" data-definition="(v) convert (a text written in code, or a coded signal) into normal language.">decipher</span> the clues, convert the coded message into normal language. Consider your passions, Elara. Consider what you were doing before that <span class="hard-word" data-definition="(adj) characterized by pretentious or showy display; designed to impress.">ostentatious</span> owl, that showy bird, so <span class="hard-word" data-definition="(adv) with a lack of courtesy; roughly or abruptly.">unceremoniously</span>, or rudely and abruptly, interrupted you."</p>
+                <p>Elara's mind raced. The constellations! She remembered the book she was reading, specifically a chapter on <span class="hard-word" data-definition="(adj) (of a story or statement) of doubtful authenticity, although widely circulated as being true.">apocryphal</span> tales, stories of doubtful authenticity but widely circulated as true, about hidden messages within star patterns. She recalled a particularly <span class="hard-word" data-definition="(adj) not discovered or known about; uncertain.">obscure</span> legend, one not well-known, about the "Celestial Cartographer's Cipher."</p>
+                <p>"The stars..." Elara whispered, her eyes lighting up with <span class="hard-word" data-definition="(adj) in an initial stage; beginning to happen or develop.">incipient</span> understanding, an understanding just beginning to develop. She traced the patterns on the box, realizing they weren't random. They depicted a specific, albeit <span class="hard-word" data-definition="(adj) belonging to a period other than that being portrayed.">anachronistic</span> – belonging to an earlier period and out of place in the present – map of the night sky.</p>
+                <p>With growing confidence, Elara began to press the stars in a sequence described in the <span class="hard-word" data-definition="(adj) (of a story or statement) of doubtful authenticity, although widely circulated as being true.">apocryphal</span> legend she'd read. There was a soft click. A tiny drawer, previously <span class="hard-word" data-definition="(adj) impossible to perceive.">imperceptible</span>, or impossible to see, slid open. Inside, nestled on velvet, was not a jewel, but another <span class="hard-word" data-definition="(n) a stiff, flat, thin material made from the prepared skin of an animal, formerly used as a durable writing surface.">parchment</span>, even older and more <span class="hard-word" data-definition="(adj) hard but liable to break easily.">brittle</span>, or easily broken, than the first. It contained a single, <span class="hard-word" data-definition="(adj) (of speech or writing) using or involving ellipsis, especially so as to be difficult to understand; ambiguous.">elliptical</span> sentence, one that was <span class="hard-word" data-definition="(adj) open to more than one interpretation; having a double meaning.">ambiguous</span> and deliberately vague: "Where light fears to tread, <span class="hard-word" data-definition="(n) the quality of having experience, knowledge, and good judgement.">wisdom</span>'s echo is bred."</p>
+                <p>Callista chuckled, a dry, rustling sound. "Well done, child. Your <span class="hard-word" data-definition="(n) the ability to make good judgements and take quick decisions.">acumen</span>, your ability to make good judgements and quick decisions, is promising. But this is merely the <span class="hard-word" data-definition="(n) an action or event serving as an introduction to something more important.">prelude</span>, an introduction to something more significant."</p>
+                <p>Elara felt a surge of <span class="hard-word" data-definition="(n) a feeling of excitement, happiness, or elation.">exhilaration</span>, a feeling of great happiness and excitement. The <span class="hard-word" data-definition="(n) a confusing and difficult problem or question.">conundrum</span> was far from solved, but she had unlocked the first step.</p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="chapter-title">Chapter 4: The Subterranean Secret</h2>
+                 <div class="svg-container">
+                    <svg class="svg-illustration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <title>Subterranean Stairs</title>
+                        <rect x="10" y="10" width="80" height="80" fill="#333"/>
+                        <line x1="20" y1="80" x2="50" y2="20" stroke="#777" stroke-width="5"/>
+                        <line x1="30" y1="80" x2="60" y2="20" stroke="#777" stroke-width="5"/>
+                        <line x1="40" y1="80" x2="70" y2="20" stroke="#777" stroke-width="5"/>
+                        <line x1="20" y1="75" x2="40" y2="75" stroke="#555" stroke-width="8"/>
+                        <line x1="25" y1="65" x2="45" y2="65" stroke="#555" stroke-width="8"/>
+                        <line x1="30" y1="55" x2="50" y2="55" stroke="#555" stroke-width="8"/>
+                        <line x1="35" y1="45" x2="55" y2="45" stroke="#555" stroke-width="8"/>
+                        <line x1="40" y1="35" x2="60" y2="35" stroke="#555" stroke-width="8"/>
+                    </svg>
+                    <svg class="svg-illustration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <title>Lexicon</title>
+                        <path d="M20 80 Q 10 50, 20 20 L 50 15 L 80 20 Q 90 50, 80 80 L 50 85 Z" fill="#deb887" stroke="#8b4513" stroke-width="2"/>
+                        <line x1="50" y1="15" x2="50" y2="85" stroke="#8b4513" stroke-width="1.5"/>
+                        <path d="M25 30 L 45 30" stroke="#5d3a1a" stroke-width="2"/>
+                        <path d="M28 40 L 42 40" stroke="#5d3a1a" stroke-width="2"/>
+                        <path d="M25 50 L 45 50" stroke="#5d3a1a" stroke-width="2"/>
+                        <path d="M55 30 L 75 30" stroke="#5d3a1a" stroke-width="2"/>
+                        <path d="M58 40 L 72 40" stroke="#5d3a1a" stroke-width="2"/>
+                        <path d="M55 50 L 75 50" stroke="#5d3a1a" stroke-width="2"/>
+                    </svg>
+                </div>
+                <p>"Where light fears to tread, <span class="hard-word" data-definition="(n) the quality of having experience, knowledge, and good judgement.">wisdom</span>'s echo is bred," Elara <span class="hard-word" data-definition="(v) thinking deeply about something.">ruminated</span> on the <span class="hard-word" data-definition="(adj) (of speech or writing) using or involving ellipsis, especially so as to be difficult to understand; ambiguous.">elliptical</span> phrase. The <span class="hard-word" data-definition="(adj) existing, occurring, or done under the earth's surface.">subterranean</span> levels of the manor, the areas beneath the ground, seemed the most logical answer. Mr. Filbert, the <span class="hard-word" data-definition="(adj) (of a person) reserved or uncommunicative in speech; saying little.">taciturn</span> butler, though initially <span class="hard-word" data-definition="(adj) not revealing one's thoughts or feelings readily.">reticent</span>, or unwilling to speak freely, eventually confirmed the existence of an old cellar, long since abandoned and considered <span class="hard-word" data-definition="(adj) (especially of a climate or situation) unhealthy.">insalubrious</span>, or unhealthy.</p>
+                <p>Armed with a <span class="hard-word" data-definition="(adj) (of a light or flame) shining unsteadily; varying in intensity.">flickering</span> lantern, Elara descended a <span class="hard-word" data-definition="(adj) (of a structure or piece of equipment) poorly made and likely to collapse.">rickety</span> staircase into the <span class="hard-word" data-definition="(adj) very dark. (Relating to the River Styx in mythology).">Stygian</span> blackness, a darkness that was profound and gloomy, like the mythical River Styx. The air was <span class="hard-word" data-definition="(adj) disagreeably damp, musty, and typically cold.">dank</span> and heavy with the smell of damp earth and decay. Cobwebs, as thick as curtains, brushed against her face, making her feel <span class="hard-word" data-definition="(adj) nauseous; feeling sick.">queasy</span>, or nauseous. This part of the manor was truly <span class="hard-word" data-definition="(adj) unfriendly or threatening in appearance.">forbidding</span>. She moved cautiously, her lantern casting <span class="hard-word" data-definition="(adj) lasting for a very short time.">ephemeral</span> shadows, shadows that lasted for only a very short time, dancing on the crumbling walls.</p>
+                <p>After what felt like an <span class="hard-word" data-definition="(adj) endless (often used hyperbolically).">interminable</span> time, an endless duration, she found a section of the wall that seemed different. Tapping it produced a hollow sound. It was a <span class="hard-word" data-definition="(adj) disguised by blending in with the surroundings.">camouflaged</span> door, cleverly disguised to blend in with its surroundings. With considerable effort, she pushed it open, revealing a small, circular chamber. In the centre stood a stone pedestal, and upon it, a single, leather-bound <span class="hard-word" data-definition="(n) the vocabulary of a person, language, or branch of knowledge; a dictionary.">lexicon</span> – a dictionary, especially of an ancient language.</p>
+                <p>This was no ordinary <span class="hard-word" data-definition="(n) the vocabulary of a person, language, or branch of knowledge; a dictionary.">lexicon</span>. Its pages were filled with symbols she’d seen on the <span class="hard-word" data-definition="(adj) difficult to interpret or understand; mysterious.">enigmatic</span> box, alongside their translations into various ancient languages. It was a key to understanding the family's <span class="hard-word" data-definition="(adj) understood by few; mysterious or secret.">arcane</span> knowledge, knowledge understood by few and mysterious. This <span class="hard-word" data-definition="(n) the vocabulary of a person, language, or branch of knowledge; a dictionary.">lexicon</span> was the "<span class="hard-word" data-definition="(n) the quality of having experience, knowledge, and good judgement.">wisdom</span>'s echo." It was a <span class="hard-word" data-definition="(n) a place where things are stored.">repository</span> of knowledge, a place where things are stored.</p>
+                <p>Suddenly, a gust of wind extinguished her lantern, plunging her into <span class="hard-word" data-definition="(adj) complete; total.">absolute</span> darkness. A feeling of <span class="hard-word" data-definition="(n) a state of uneasiness or anxiety.">disquietude</span>, a state of unease or anxiety, washed over her. She fumbled for her matches, her hands trembling. The silence of the <span class="hard-word" data-definition="(adj) existing, occurring, or done under the earth's surface.">subterranean</span> chamber was <span class="hard-word" data-definition="(adj) unjustly inflicting hardship and constraint; weighing heavily on the mind or spirits.">oppressive</span>, weighing heavily on her.</p>
+            </section>
+
+            <section>
+                <h2 class="chapter-title">Chapter 5: The Luminescent Legacy</h2>
+                <div class="svg-container">
+                    <svg class="svg-illustration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <title>Luminescent Chamber</title>
+                        <defs>
+                            <radialGradient id="glowGrad" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5">
+                                <stop offset="0%" style="stop-color:rgba(173, 216, 230, 0.8); stop-opacity:1" /> <stop offset="100%" style="stop-color:rgba(173, 216, 230, 0); stop-opacity:0" />
+                            </radialGradient>
+                        </defs>
+                        <rect x="0" y="0" width="100" height="100" fill="#2c001e" /> <path d="M10 10 Q 50 30, 90 10" stroke="url(#glowGrad)" stroke-width="5" fill="none"/>
+                        <path d="M10 50 Q 30 40, 50 50 T 90 50" stroke="url(#glowGrad)" stroke-width="4" fill="none"/>
+                        <path d="M20 90 Q 50 70, 80 90" stroke="url(#glowGrad)" stroke-width="5" fill="none"/>
+                        <circle cx="30" cy="70" r="10" stroke="url(#glowGrad)" stroke-width="3" fill="none"/>
+                        <circle cx="70" cy="30" r="12" stroke="url(#glowGrad)" stroke-width="3" fill="none"/>
+                    </svg>
+                </div>
+                <p>Just as panic began to <span class="hard-word" data-definition="(v) begin to grow or increase rapidly; flourish.">burgeon</span>, to grow and flourish, Elara’s fingers brushed against something smooth and cool on the pedestal beside the <span class="hard-word" data-definition="(n) the vocabulary of a person, language, or branch of knowledge; a dictionary.">lexicon</span>. It was a small, flat stone. Remembering the <span class="hard-word" data-definition="(adj) elaborately or highly decorated.">ornate</span> box and its star patterns, she pressed it.</p>
+                <p>Instantly, faint lines of light began to <span class="hard-word" data-definition="(v) (of a feeling, quality, or sensation) issue or spread out from (a source).">emanate</span> from the stone, spreading across the walls of the chamber. These were not electric lights, but a soft, <span class="hard-word" data-definition="(adj) emitting light not caused by heat.">luminescent</span> glow, a gentle emission of light, that revealed intricate carvings covering every surface. The carvings depicted celestial events, complex mathematical formulae, and philosophical <span class="hard-word" data-definition="(n) pithy observations that contain a general truth.">aphorisms</span>, short, clever sayings that express a general truth.</p>
+                <p>This chamber was a <span class="hard-word" data-definition="(n) a place of refuge or safety.">sanctuary</span> of knowledge, a place where generations of her <span class="hard-word" data-definition="(n) ancestors or parents.">progenitors</span>, her ancestors, had recorded their discoveries and <span class="hard-word" data-definition="(n) the quality of having experience, knowledge, and good judgement.">wisdom</span>. The <span class="hard-word" data-definition="(adj) understood by few; mysterious or secret.">arcane</span> symbols from the <span class="hard-word" data-definition="(n) the vocabulary of a person, language, or branch of knowledge; a dictionary.">lexicon</span> were the key to understanding it all. This was her true inheritance: not wealth, but access to this <span class="hard-word" data-definition="(adj) (of a state, quality, or emotion) very great or intense.">profound</span>, or very great and intense, <span class="hard-word" data-definition="(n) an original and bountiful source of something.">wellspring</span> of learning.</p>
+                <p>Great-Aunt Callista appeared at the doorway, a genuine smile on her face, no longer <span class="hard-word" data-definition="(adj) difficult to interpret or understand; mysterious.">enigmatic</span> but openly proud. "You see, Elara," she said, her voice filled with a warmth that <span class="hard-word" data-definition="(v) (of an appearance) fail to give a true impression of (something).">belied</span> her <span class="hard-word" data-definition="(adj) avoiding the company of other people; solitary.">reclusive</span> nature. "Our family doesn't hoard gold; we <span class="hard-word" data-definition="(v) select, organize, and look after the items in (a collection or exhibition).">curate</span> <span class="hard-word" data-definition="(n) the quality of having experience, knowledge, and good judgement.">wisdom</span>, selecting, organizing, and looking after it. This is your legacy, should you choose to accept its <span class="hard-word" data-definition="(n) an important role or responsibility that passes from one person to another.">mantle</span>, its important role or responsibility."</p>
+                <p>Elara felt an almost <span class="hard-word" data-definition="(adj) (of a feeling or atmosphere) so intense as to seem almost tangible.">palpable</span> sense of connection, a connection so intense it was as if she could touch it, to the generations before her. The <span class="hard-word" data-definition="(adj) (of a building or object) in a state of disrepair or ruin as a result of age or neglect.">dilapidated</span> exterior of the manor hid an interior <span class="hard-word" data-definition="(n) (German) beauty.">Schönheit</span>, a German word for beauty, of unimaginable depth. The <span class="hard-word" data-definition="(adj) (of an appetite or desire) impossible to satisfy.">insatiable</span> curiosity that had always defined her now had a focus, a purpose.</p>
+                <p>"I accept," Elara said, her voice clear and <span class="hard-word" data-definition="(adj) admirably purposeful, determined, and unwavering.">resolute</span>, no longer <span class="hard-word" data-definition="(adj) bewildered or perplexed.">flummoxed</span> but filled with a newfound <span class="hard-word" data-definition="(n) mental calmness, composure, and evenness of temper, especially in a difficult situation.">equanimity</span>, a mental calmness and composure. She knew the path ahead would be <span class="hard-word" data-definition="(adj) involving or requiring strenuous effort; difficult and tiring.">arduous</span>, filled with more <span class="hard-word" data-definition="(n) a confusing and difficult problem or question.">conundrums</span> to <span class="hard-word" data-definition="(v) convert (a text written in code, or a coded signal) into normal language.">decipher</span>, but she was ready. The <span class="hard-word" data-definition="(adj) characterized by pretentious or showy display; designed to impress.">ostentatious</span> owl had indeed <span class="hard-word" data-definition="(v) be a sign that (something) is about to happen.">heralded</span> a <span class="hard-word" data-definition="(adj) of great importance or significance, especially in its bearing on the future.">momentous</span> change in her life. Her journey into the <span class="hard-word" data-definition="(adj) (of a network) like a labyrinth; irregular and twisting.">labyrinthine</span> heart of Whispering Manor had led her to a treasure far more valuable than she could have ever <span class="hard-word" data-definition="(v) formed an opinion or conclusion about (something) on the basis of incomplete information.">conjectured</span>, or guessed. It was the <span class="hard-word" data-definition="(adj) emitting light not caused by heat.">luminescent</span>, glowing, legacy of her ancestors, waiting to be explored. She was no longer just Elara Moon; she was a <span class="hard-word" data-definition="(n) people who have responsibility for taking care of or protecting something.">custodian</span> of <span class="hard-word" data-definition="(n) the quality of having experience, knowledge, and good judgement.">wisdom</span>, a future <span class="hard-word" data-definition="(n) the quality of having or showing great knowledge or learning; scholarship.">erudite</span> scholar, ready to <span class="hard-word" data-definition="(v) reading or examining something carefully.">peruse</span> the <span class="hard-word" data-definition="(n) large, heavy, scholarly books.">tomes</span> of her family's past and contribute her own <span class="hard-word" data-definition="(adj) having or showing keen mental discernment and good judgement; wise or shrewd.">sagacious</span> insights. The once <span class="hard-word" data-definition="(adj) having a meaning that is mysterious or obscure.">cryptic</span> <span class="hard-word" data-definition="(n) an order to appear before a judge or magistrate, or the writ containing such an order. (Here used more generally).">summons</span> had led to a future filled with <span class="hard-word" data-definition="(adj) emitting or reflecting light, shining.">luminous</span> possibility.</p>
+            </section>
+        </main>
+
+        <div id="definition-tooltip">
+            <h3 id="tooltip-word"></h3>
+            <p id="tooltip-definition"></p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tooltip = document.getElementById('definition-tooltip');
+            const tooltipWord = document.getElementById('tooltip-word');
+            const tooltipDefinition = document.getElementById('tooltip-definition');
+            const hardWords = document.querySelectorAll('.hard-word');
+            let currentTargetWord = null; // To track which word's tooltip is active
+
+            // Function to show and position the tooltip
+            const showTooltip = (targetElement, word, definition) => {
+                tooltipWord.textContent = word.charAt(0).toUpperCase() + word.slice(1);
+                tooltipDefinition.textContent = definition;
+
+                const rect = targetElement.getBoundingClientRect();
+                const containerRect = targetElement.closest('.container').getBoundingClientRect();
+
+                // Position tooltip below the word
+                let top = rect.bottom + window.scrollY + 8; // 8px offset from the word
+                let left = rect.left + window.scrollX + (rect.width / 2) - (tooltip.offsetWidth / 2);
+
+                // Adjust if tooltip goes off-screen horizontally
+                if (left < containerRect.left + window.scrollX) {
+                    left = containerRect.left + window.scrollX + 10; // 10px padding from container edge
+                } else if (left + tooltip.offsetWidth > containerRect.right + window.scrollX) {
+                    left = containerRect.right + window.scrollX - tooltip.offsetWidth - 10;
+                }
+                
+                // Adjust if tooltip goes off-screen vertically (below)
+                // A more robust solution would check if it fits better above, but this is simpler
+                if (top + tooltip.offsetHeight > window.innerHeight + window.scrollY) {
+                    top = rect.top + window.scrollY - tooltip.offsetHeight - 8; // Position above
+                }
+
+
+                tooltip.style.top = `${top}px`;
+                tooltip.style.left = `${left}px`;
+                
+                tooltip.classList.add('visible');
+                currentTargetWord = targetElement;
+            };
+
+            // Function to hide the tooltip
+            const hideTooltip = () => {
+                tooltip.classList.remove('visible');
+                currentTargetWord = null;
+            };
+
+            hardWords.forEach(wordElement => {
+                wordElement.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Prevent document click listener from firing immediately
+                    
+                    const wordText = wordElement.textContent;
+                    const definitionText = wordElement.dataset.definition;
+
+                    if (currentTargetWord === wordElement) {
+                        // If clicking the same word, toggle tooltip
+                        if (tooltip.classList.contains('visible')) {
+                            hideTooltip();
+                        } else {
+                            // Recalculate tooltip.offsetWidth in case it was hidden and width was 0
+                            tooltip.style.opacity = '0'; // Make it temporarily invisible for width calculation
+                            tooltip.style.display = 'block'; // Ensure it has dimensions
+                            const tempWidth = tooltip.offsetWidth;
+                            tooltip.style.display = ''; // Revert display
+                            tooltip.style.opacity = ''; // Revert opacity
+                            showTooltip(wordElement, wordText, definitionText);
+                        }
+                    } else {
+                        // Clicking a new word
+                        // Recalculate tooltip.offsetWidth
+                        tooltip.style.opacity = '0'; 
+                        tooltip.style.display = 'block';
+                        const tempWidth = tooltip.offsetWidth;
+                        tooltip.style.display = '';
+                        tooltip.style.opacity = '';
+                        showTooltip(wordElement, wordText, definitionText);
+                    }
+                });
+            });
+
+            // Hide tooltip if clicked outside of a hard word or the tooltip itself
+            document.addEventListener('click', (event) => {
+                if (!tooltip.contains(event.target) && !event.target.classList.contains('hard-word')) {
+                    if (tooltip.classList.contains('visible')) {
+                        hideTooltip();
+                    }
+                }
+            });
+             // Hide tooltip on scroll to prevent detachment
+            window.addEventListener('scroll', () => {
+                if (tooltip.classList.contains('visible')) {
+                    hideTooltip();
+                }
+            }, true); // Use capture phase to catch scroll events early
+        });
+    </script>
+</body>
+</html>
